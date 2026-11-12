@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f2e9">
+<meta name="description" content="Кассовые решения и автоматизация бизнеса — Вячеслав Курсеев. Подбор оборудования и консультации.">
+<title>Вячеслав Курсеев — кассовые решения</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{font-family:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#153b2c;background:#f5f2e9;font-synthesis:none;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}body{margin:0;min-width:320px;min-height:100vh;background:radial-gradient(ellipse at 10% 15%,rgba(53,168,121,.20),transparent 34%),radial-gradient(ellipse at 90% 85%,rgba(214,184,117,.22),transparent 34%),#f5f2e9}
+button,textarea{font:inherit}button{cursor:pointer}
+.app-shell{width:min(100%,520px);min-height:100vh;margin:0 auto;padding:calc(20px + env(safe-area-inset-top)) 20px calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;position:relative;overflow:hidden}
+.app-shell:before{content:"";position:fixed;width:330px;height:330px;border-radius:50%;background:rgba(8,124,80,.12);filter:blur(75px);top:25%;left:-180px;pointer-events:none}
+.app-shell:after{content:"";position:fixed;width:280px;height:280px;border-radius:50%;background:rgba(214,184,117,.17);filter:blur(75px);bottom:0;right:-160px;pointer-events:none}
+.brand{display:flex;align-items:center;gap:12px;padding:14px 15px;border:1px solid rgba(255,255,255,.85);border-radius:22px;background:rgba(255,255,255,.58);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 8px 28px rgba(24,63,44,.07);position:relative;z-index:1}
+.monogram{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#087c50,#123d2d);color:#fff;font-weight:700;font-size:17px;letter-spacing:-1px}
+.brand-copy{min-width:0;flex:1}.brand-name{font-size:14px;font-weight:800;letter-spacing:.025em}.brand-sub{font-size:9px;line-height:1.45;color:#567261;font-weight:700;letter-spacing:.045em;margin-top:4px;max-width:260px}
+.online-dot{width:8px;height:8px;background:#35a879;border-radius:50%;box-shadow:0 0 0 4px rgba(53,168,121,.12)}
+.home-screen{flex:1;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;min-height:470px}
+.hero-mark{height:170px;display:grid;place-items:center;color:rgba(18,61,45,.055);font-size:110px;font-weight:800;letter-spacing:-12px;user-select:none}
+.main-actions{display:grid;gap:14px}
+.main-card{height:104px;border:1px solid rgba(255,255,255,.95);border-radius:26px;background:rgba(255,255,255,.54);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);box-shadow:0 12px 32px rgba(18,61,45,.08),inset 0 1px rgba(255,255,255,.9);display:flex;align-items:center;justify-content:space-between;padding:0 25px;color:#153b2c;font-size:17px;font-weight:800;letter-spacing:.035em;transition:transform .18s,background .18s}
+.main-card:active,.list-card:active,.option-card:active{transform:scale(.985)}
+.main-card.primary{background:linear-gradient(115deg,rgba(8,124,80,.88),rgba(18,61,45,.96));color:white;border-color:rgba(255,255,255,.45);box-shadow:0 14px 30px rgba(8,75,48,.18)}
+.main-card b,.list-card b,.option-card b{font-size:27px;font-weight:400;line-height:1}
+.content-screen{flex:1;position:relative;z-index:1;padding-top:22px;display:flex;flex-direction:column}
+.topbar{display:grid;grid-template-columns:42px 1fr 42px;align-items:center;margin-bottom:23px}
+.back-circle{width:40px;height:40px;border:1px solid rgba(255,255,255,.9);border-radius:50%;background:rgba(255,255,255,.58);color:#153b2c;font-size:22px}
+.topbar h2{text-align:center;font-size:19px;margin:0;font-weight:800}
+.category-list,.option-list{display:grid;gap:10px}
+.list-card,.option-card{width:100%;min-height:61px;border:1px solid rgba(255,255,255,.95);border-radius:19px;background:rgba(255,255,255,.63);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 6px 18px rgba(18,61,45,.045),inset 0 1px rgba(255,255,255,.9);padding:0 19px;display:flex;align-items:center;justify-content:space-between;text-align:left;color:#173d2d;font-size:15px;font-weight:650;transition:transform .16s}
+.list-card b,.option-card b{font-size:24px;color:#39805c}
+.progress{height:5px;border-radius:9px;background:rgba(18,61,45,.10);overflow:hidden;margin:0 0 13px}
+.progress span{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#35a879,#087c50);transition:width .2s}
+.step-count{font-size:10px;font-weight:800;letter-spacing:.12em;color:#64806e;margin-bottom:9px}
+.content-screen h1{font-size:23px;line-height:1.25;margin:0 0 20px;color:#123d2d}
+.option-card{min-height:57px;font-weight:550}
+.option-card.selected{border-color:#35a879;background:rgba(222,240,226,.88);box-shadow:0 0 0 2px rgba(53,168,121,.10)}
+.comment-wrap{margin-top:20px;display:grid;gap:8px}
+.comment-wrap label{font-size:12px;font-weight:700;color:#567261}
+.comment-wrap textarea{resize:vertical;border:1px solid rgba(255,255,255,.95);border-radius:16px;background:rgba(255,255,255,.7);padding:13px;color:#153b2c;outline:none}
+.bottom-actions{display:flex;gap:10px;margin-top:auto;padding-top:24px}
+.button{min-height:52px;border-radius:17px;border:1px solid transparent;padding:0 19px;font-size:14px;font-weight:750}
+.button.secondary{background:rgba(255,255,255,.65);border-color:rgba(255,255,255,.9);color:#244b36}
+.button.dark{background:linear-gradient(110deg,#087c50,#123d2d);color:white;box-shadow:0 9px 22px rgba(8,75,48,.15);flex:1}
+.button:disabled{opacity:.38;cursor:not-allowed}
+.button.full{width:100%;margin-top:20px}
+.button span{margin-left:8px}
+.summary-card{border:1px solid rgba(255,255,255,.95);border-radius:23px;background:rgba(255,255,255,.68);backdrop-filter:blur(20px);padding:19px;box-shadow:0 9px 26px rgba(18,61,45,.06)}
+.summary-title{font-size:16px;font-weight:800;margin-bottom:12px}
+.summary-line{padding:11px 0;border-top:1px solid rgba(18,61,45,.09);display:grid;gap:4px}
+.summary-line small{font-size:11px;color:#718779}.summary-line strong{font-size:14px;font-weight:700;color:#173d2d}
+.hint{font-size:12px;line-height:1.55;color:#667b6d;margin:14px 3px 0}
+.text-button{border:0;background:transparent;color:#26744e;font-size:12px;font-weight:700;padding:15px}
+.footer{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;margin-top:25px;padding-top:13px;border-top:1px solid rgba(18,61,45,.09);font-size:9px;letter-spacing:.08em;font-weight:800;color:#829286}
+.footer button{border:0;background:none;color:#527261;font-size:11px;font-weight:700}
+@media(min-width:600px){.app-shell{min-height:780px;margin:24px auto;border-radius:32px;border:1px solid rgba(255,255,255,.8);box-shadow:0 20px 70px rgba(18,61,45,.12);background:rgba(245,242,233,.62)}}
+@media(max-height:700px){.hero-mark{height:95px;font-size:76px}.home-screen{min-height:380px}.main-card{height:84px}}
+</style>
+</head>
+<body>
+<main class="app-shell">
+<header class="brand"><div class="monogram">ВК</div><div class="brand-copy"><div class="brand-name">ВЯЧЕСЛАВ КУРСЕЕВ</div><div class="brand-sub">КАССОВЫЕ РЕШЕНИЯ И АВТОМАТИЗАЦИЯ БИЗНЕСА</div></div><span class="online-dot"></span></header>
+<div id="app" style="display:flex;flex:1;flex-direction:column"></div>
+<footer class="footer"><span>ВЯЧЕСЛАВ КУРСЕЕВ</span><button id="homeBtn">Главное меню</button></footer>
+</main>
+<script>
+// Укажите username Telegram без символа @. Например: "slavyankakurs".
+const CONTACT_USERNAME = "YOUR_TELEGRAM_USERNAME";
+
+const BUY = [
+{id:'Касса',questions:[
+{key:'Потребность',label:'Что требуется?',options:['Новая касса','Замена старой кассы','Подобрать конкретную модель','Аренда кассы']},
+{key:'Сфера деятельности',label:'Чем занимаетесь?',options:['Розничная торговля','Общепит','Услуги','Другое']},
+{key:'Дополнительно',label:'Нужна помощь с подбором?',options:['Да, подобрать решение','Нет, знаю что нужно']}]},
+{id:'Фискальный накопитель',questions:[
+{key:'Потребность',label:'Что требуется?',options:['Замена ФН','Покупка ФН заранее','Подобрать подходящий ФН']},
+{key:'Срок ФН',label:'Какой срок нужен?',options:['15 месяцев','36 месяцев','Не знаю, нужна консультация']},
+{key:'Модель кассы',label:'Какая у вас касса?',options:['АТОЛ','Дримкас','Эвотор','Другая / не знаю']}]},
+{id:'ОФД',questions:[
+{key:'Потребность',label:'Что требуется?',options:['Подключить ОФД','Продлить ОФД','Сменить ОФД','Помочь с настройкой']},
+{key:'ОФД',label:'Есть предпочтения?',options:['ОФД Платформа','Такском','Другой','Нужна рекомендация']}]},
+{id:'Подписки',questions:[
+{key:'Подписка',label:'Какая подписка интересует?',options:['Дримкас','Эвотор','АТОЛ','Другая / нужна помощь']},
+{key:'Потребность',label:'Что требуется?',options:['Новая подписка','Продление','Помощь с выбором']}]},
+{id:'Сканер',questions:[
+{key:'Тип сканера',label:'Какой сканер нужен?',options:['Ручной','Беспроводной','Стационарный','Не знаю, нужен подбор']},
+{key:'Назначение',label:'Для каких задач?',options:['Маркировка','Кассовая зона','Склад / инвентаризация','Другое']}]},
+{id:'POS-компьютер',questions:[
+{key:'Потребность',label:'Что требуется?',options:['POS-компьютер','Моноблок','Компьютер для кассовой зоны','Нужен подбор']},
+{key:'Программа',label:'С каким ПО будет работать?',options:['Frontol','1С','Другое','Пока не определился']}]},
+{id:'КСО',questions:[
+{key:'Потребность',label:'Что требуется?',options:['Одна касса самообслуживания','Несколько КСО','Комплексное решение']},
+{key:'Количество',label:'Сколько касс планируется?',options:['1','2–3','4 и более','Пока не знаю']},
+{key:'Дополнительно',label:'Нужна интеграция и запуск?',options:['Да, под ключ','Только оборудование','Нужна консультация']}]}
+];
+const HELP = [
+{id:'Не работает касса',questions:[
+{key:'Модель кассы',label:'Какая у вас касса?',options:['АТОЛ','Дримкас','Эвотор','Другая / не знаю']},
+{key:'Проблема',label:'Что произошло?',options:['Не включается','Не печатает чек','Ошибка на экране','Проблема с маркировкой','Другая проблема']},
+{key:'Срочность',label:'Насколько срочно?',options:['Касса полностью не работает','Работает, но есть проблема','Нужна плановая помощь']}]},
+{id:'Честный знак',questions:[
+{key:'Тема',label:'С чем нужна помощь?',options:['ЛМ ЧЗ','ТС ПиОТ','Разрешительный режим','Маркировка товара','Другое']},
+{key:'Проблема',label:'Что требуется?',options:['Установка и настройка','Ошибка / не работает','Подготовка кассы к требованиям','Консультация']},
+{key:'Касса',label:'Какая касса используется?',options:['АТОЛ','Дримкас','Эвотор','Другая / не знаю']}]},
+{id:'Штрафы',questions:[
+{key:'Ситуация',label:'Что произошло?',options:['Получено уведомление / предписание','Уже выписан штраф','Есть риск нарушения','Хочу разобраться заранее']},
+{key:'Тема',label:'С чем связано?',options:['ККТ и чеки','Маркировка','ОФД / передача данных','Другое / не знаю']}]},
+{id:'Хочу кассу',questions:[
+{key:'Сфера деятельности',label:'Чем занимаетесь?',options:['Розничная торговля','Общепит','Услуги','Интернет-магазин','Другое']},
+{key:'Потребность',label:'Что нужно?',options:['Подобрать кассу','Касса + оборудование','Касса + настройка под ключ','Пока не знаю']},
+{key:'Маркировка',label:'Есть маркированные товары?',options:['Да','Нет','Планируются','Не знаю']}]}
+];
+
+const state={screen:'home',direction:'',category:null,answers:{},step:0,extra:'',copied:false};
+const app=document.getElementById('app');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function message(){
+ const lines=['Здравствуйте, Вячеслав!','',state.direction==='buy'?'Интересует покупка оборудования.':'Нужна консультация.',`Направление: ${state.category?.id||''}`,...Object.entries(state.answers).map(([k,v])=>`${k}: ${v}`),...(state.extra.trim()?[`Комментарий: ${state.extra.trim()}`]:[]),'','Готов обсудить детали.'];
+ return lines.join('\n');
+}
+function reset(){Object.assign(state,{screen:'home',direction:'',category:null,answers:{},step:0,extra:'',copied:false});render()}
+function back(){if(state.screen==='categories')state.screen='home';else if(state.screen==='questions')state.screen='categories';else if(state.screen==='summary')state.screen='questions';else reset();render()}
+function topbar(title){return `<div class="topbar"><button class="back-circle" data-action="back">←</button><h2>${esc(title)}</h2><span></span></div>`}
+function render(){
+ let out='';
+ if(state.screen==='home') out=`<section class="home-screen"><div class="hero-mark">ВК</div><div class="main-actions"><button class="main-card primary" data-direction="buy"><span>КУПИТЬ</span><b>›</b></button><button class="main-card" data-direction="help"><span>КОНСУЛЬТАЦИЯ</span><b>›</b></button></div></section>`;
+ if(state.screen==='categories'){
+  const list=state.direction==='buy'?BUY:HELP;
+  out=`<section class="content-screen">${topbar(state.direction==='buy'?'Покупка':'Консультация')}<div class="category-list">${list.map((item,i)=>`<button class="list-card" data-category="${i}"><span>${esc(item.id)}</span><b>›</b></button>`).join('')}</div></section>`;
+ }
+ if(state.screen==='questions'&&state.category){
+  const qs=state.category.questions,q=qs[state.step],last=state.step===qs.length-1;
+  out=`<section class="content-screen">${topbar(state.category.id)}<div class="progress"><span style="width:${((state.step+1)/qs.length)*100}%"></span></div><div class="step-count">ВОПРОС ${state.step+1} ИЗ ${qs.length}</div><h1>${esc(q.label)}</h1><div class="option-list">${q.options.map(o=>`<button class="option-card ${state.answers[q.key]===o?'selected':''}" data-option="${esc(o)}"><span>${esc(o)}</span><b>${state.answers[q.key]===o?'✓':'›'}</b></button>`).join('')}</div>${last?`<div class="comment-wrap"><label for="extra">Дополнение (необязательно)</label><textarea id="extra" rows="3" placeholder="Коротко опишите задачу...">${esc(state.extra)}</textarea></div>`:''}<div class="bottom-actions"><button class="button secondary" data-action="back">Назад</button><button class="button dark" data-action="next" ${state.answers[q.key]?'':'disabled'}>${last?'К сообщению':'Далее'}</button></div></section>`;
+ }
+ if(state.screen==='summary'){
+  const rows=[['Направление',state.direction==='buy'?'Покупка оборудования':'Консультация'],['Категория',state.category.id],...Object.entries(state.answers).map(([k,v])=>[k,v]),...(state.extra.trim()?[['Комментарий',state.extra.trim()]]:[])];
+  out=`<section class="content-screen">${topbar('Ваш запрос')}<div class="summary-card"><div class="summary-title">Предварительная заявка</div>${rows.map(([k,v])=>`<div class="summary-line"><small>${esc(k)}</small><strong>${esc(v)}</strong></div>`).join('')}</div><p class="hint">Сообщение будет подготовлено для отправки в личный Telegram-чат. Вы сможете проверить его перед отправкой.</p><button class="button dark full" data-action="telegram">Перейти к Вячеславу <span>↗</span></button><button class="text-button" data-action="copy">${state.copied?'Текст скопирован':'Скопировать текст сообщения'}</button></section>`;
+ }
+ app.innerHTML=out;
+}
+app.addEventListener('click',async e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.direction){state.direction=b.dataset.direction;state.screen='categories';state.category=null;state.answers={};state.step=0;render();return}
+ if(b.dataset.category!==undefined){const list=state.direction==='buy'?BUY:HELP;state.category=list[+b.dataset.category];state.answers={};state.step=0;state.extra='';state.screen='questions';render();return}
+ if(b.dataset.option!==undefined){const q=state.category.questions[state.step];state.answers[q.key]=b.dataset.option;render();return}
+ if(b.dataset.action==='back'){back();return}
+ if(b.dataset.action==='next'){const last=state.step===state.category.questions.length-1;if(last)state.screen='summary';else state.step++;render();return}
+ if(b.dataset.action==='telegram'){
+  if(!CONTACT_USERNAME||CONTACT_USERNAME==='YOUR_TELEGRAM_USERNAME'){alert('Сначала укажите Telegram username в начале файла index.html (переменная CONTACT_USERNAME).');return}
+  const url=`https://t.me/${CONTACT_USERNAME.replace(/^@/,'')}?text=${encodeURIComponent(message())}`;
+  window.open(url,'_blank','noopener');return;
+ }
+ if(b.dataset.action==='copy'){try{await navigator.clipboard.writeText(message());state.copied=true;b.textContent='Текст скопирован'}catch{alert('Не удалось скопировать. Выделите и скопируйте текст вручную.')}return}
+});
+app.addEventListener('input',e=>{if(e.target.id==='extra')state.extra=e.target.value});
+document.getElementById('homeBtn').addEventListener('click',reset);
+render();
+</script>
+</body>
+</html>
